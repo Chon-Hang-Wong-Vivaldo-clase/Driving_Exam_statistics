@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowTitle">
+   <string>Driving Exam Statistics</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QGroupBox" name="filtersGroup">
+      <property name="title">
+       <string>Filters</string>
+      </property>
+      <layout class="QGridLayout" name="filtersLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="labelFromYear">
+         <property name="text">
+          <string>From Year</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="comboFromYear"/>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="labelFromMonth">
+         <property name="text">
+          <string>From Month</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QComboBox" name="comboFromMonth"/>
+       </item>
+       <item row="0" column="4">
+        <widget class="QLabel" name="labelToYear">
+         <property name="text">
+          <string>To Year</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="5">
+        <widget class="QComboBox" name="comboToYear"/>
+       </item>
+       <item row="0" column="6">
+        <widget class="QLabel" name="labelToMonth">
+         <property name="text">
+          <string>To Month</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="7">
+        <widget class="QComboBox" name="comboToMonth"/>
+       </item>
+
+       <item row="1" column="0">
+        <widget class="QLabel" name="labelProvince">
+         <property name="text">
+          <string>Province</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="3">
+        <widget class="QComboBox" name="comboProvince"/>
+       </item>
+       <item row="1" column="4">
+        <widget class="QLabel" name="labelExamCenter">
+         <property name="text">
+          <string>Exam Center</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5" colspan="3">
+        <widget class="QComboBox" name="comboExamCenter"/>
+       </item>
+
+       <item row="2" column="0">
+        <widget class="QLabel" name="labelDrivingSchool">
+         <property name="text">
+          <string>Driving School</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="3">
+        <widget class="QComboBox" name="comboDrivingSchool"/>
+       </item>
+       <item row="2" column="4">
+        <widget class="QLabel" name="labelExamType">
+         <property name="text">
+          <string>Exam Type</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5" colspan="3">
+        <widget class="QComboBox" name="comboExamType"/>
+       </item>
+
+       <item row="3" column="0">
+        <widget class="QLabel" name="labelPermit">
+         <property name="text">
+          <string>Permit</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="3">
+        <widget class="QComboBox" name="comboPermit"/>
+       </item>
+       <item row="3" column="4">
+        <widget class="QPushButton" name="btnApplyFilters">
+         <property name="text">
+          <string>Apply Filters</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5">
+        <widget class="QPushButton" name="btnClearFilters">
+         <property name="text">
+          <string>Clear Filters</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableView" name="tableView"/>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="actionsLayout">
+      <item>
+       <widget class="QPushButton" name="btnPrintPdf">
+        <property name="text">
+         <string>Export PDF</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1100</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionImportCsv"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionImportCsv">
+   <property name="text">
+    <string>Import CSV</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
