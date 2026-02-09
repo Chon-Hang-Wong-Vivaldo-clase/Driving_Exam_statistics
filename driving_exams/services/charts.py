@@ -9,6 +9,7 @@ from PyQt6.QtCharts import (
     QChartView,
     QValueAxis,
 )
+from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPainter
 from PyQt6.QtWidgets import QWidget, QVBoxLayout
 
@@ -27,10 +28,8 @@ class ChartWidget(QWidget):
 
     def update_chart(self, rows: list[tuple]) -> None:
         self._chart.removeAllSeries()
-        if self._chart.axisX() is not None:
-            self._chart.removeAxis(self._chart.axisX())
-        if self._chart.axisY() is not None:
-            self._chart.removeAxis(self._chart.axisY())
+        for axis in self._chart.axes():
+            self._chart.removeAxis(axis)
 
         if not rows:
             self._chart.setTitle("No data")
@@ -55,7 +54,7 @@ class ChartWidget(QWidget):
         axis_x = QBarCategoryAxis()
         axis_x.append(labels)
         axis_x.setLabelsAngle(-30)
-        self._chart.addAxis(axis_x, axis_x.AlignmentFlag.AlignBottom)
+        self._chart.addAxis(axis_x, Qt.AlignmentFlag.AlignBottom)
         series.attachAxis(axis_x)
 
         axis_y = QValueAxis()
@@ -63,7 +62,7 @@ class ChartWidget(QWidget):
         axis_y.setMin(0)
         max_val = max((p + f) for p, f in zip(passed_values, failed_values)) if rows else 0
         axis_y.setMax(max(5, max_val))
-        self._chart.addAxis(axis_y, axis_y.AlignmentFlag.AlignLeft)
+        self._chart.addAxis(axis_y, Qt.AlignmentFlag.AlignLeft)
         series.attachAxis(axis_y)
 
         self._chart.legend().setVisible(True)

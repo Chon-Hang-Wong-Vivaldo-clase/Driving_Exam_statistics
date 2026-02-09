@@ -10,6 +10,7 @@ from PyQt6.uic import loadUi
 
 from services.csv_importer import import_csv
 from services.database import Database
+from services.charts import ChartWidget
 from services.reports import export_pdf
 
 
@@ -20,11 +21,14 @@ class MainWindow(QtWidgets.QMainWindow):
         loadUi(ui_path, self)
 
         self._db = Database(self._db_path())
+        self._chart = ChartWidget()
         self.actionExit.triggered.connect(self.close)
         self.actionImportCsv.triggered.connect(self._import_csv)
         self.btnApplyFilters.clicked.connect(self._apply_filters)
         self.btnClearFilters.clicked.connect(self._clear_filters)
-        self.btnPrintPdf.clicked.connect(self._export_pdf)
+        self.btnPrintTablePdf.clicked.connect(self._export_pdf_table)
+        self.btnPrintChartPdf.clicked.connect(self._export_pdf_chart)
+        self.btnPrintBothPdf.clicked.connect(self._export_pdf_both)
 
         self._setup_combos()
         self._apply_filters()
@@ -146,6 +150,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.tableView.setModel(model)
         self.tableView.resizeColumnsToContents()
+        chart_rows = self._db.fetch_chart_data(self._filters())
+        self._chart.update_chart(chart_rows)
 
     def _clear_filters(self) -> None:
         for combo in (
@@ -173,13 +179,35 @@ class MainWindow(QtWidgets.QMainWindow):
         except Exception as exc:
             QMessageBox.critical(self, "Import Error", str(exc))
 
-    def _export_pdf(self) -> None:
-        path_str, _ = QFileDialog.getSaveFileName(self, "Export PDF", "report.pdf", "PDF Files (*.pdf)")
+    def _export_pdf_table(self) -> None:
+        path_str, _ = QFileDialog.getSaveFileName(self, "Export Table PDF", "report_table.pdf", "PDF Files (*.pdf)")
         if not path_str:
             return
 
         try:
             export_pdf(Path(path_str), table_widget=self.tableView, chart_widget=None)
+            QMessageBox.information(self, "Export Complete", "PDF exported")
+        except Exception as exc:
+            QMessageBox.critical(self, "Export Error", str(exc))
+
+    def _export_pdf_chart(self) -> None:
+        path_str, _ = QFileDialog.getSaveFileName(self, "Export Chart PDF", "report_chart.pdf", "PDF Files (*.pdf)")
+        if not path_str:
+            return
+
+        try:
+            export_pdf(Path(path_str), table_widget=None, chart_widget=self._chart)
+            QMessageBox.information(self, "Export Complete", "PDF exported")
+        except Exception as exc:
+            QMessageBox.critical(self, "Export Error", str(exc))
+
+    def _export_pdf_both(self) -> None:
+        path_str, _ = QFileDialog.getSaveFileName(self, "Export PDF", "report.pdf", "PDF Files (*.pdf)")
+        if not path_str:
+            return
+
+        try:
+            export_pdf(Path(path_str), table_widget=self.tableView, chart_widget=self._chart)
             QMessageBox.information(self, "Export Complete", "PDF exported")
         except Exception as exc:
             QMessageBox.critical(self, "Export Error", str(exc))

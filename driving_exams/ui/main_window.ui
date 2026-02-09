@@ -10,13 +10,13 @@
     <item>
      <widget class="QGroupBox" name="filtersGroup">
       <property name="title">
-       <string>Filters</string>
+       <string>Filtros</string>
       </property>
       <layout class="QGridLayout" name="filtersLayout">
        <item row="0" column="0">
         <widget class="QLabel" name="labelFromYear">
          <property name="text">
-          <string>From Year</string>
+          <string>Año desde</string>
          </property>
         </widget>
        </item>
@@ -26,7 +26,7 @@
        <item row="0" column="2">
         <widget class="QLabel" name="labelFromMonth">
          <property name="text">
-          <string>From Month</string>
+          <string>Mes desde</string>
          </property>
         </widget>
        </item>
@@ -36,7 +36,7 @@
        <item row="0" column="4">
         <widget class="QLabel" name="labelToYear">
          <property name="text">
-          <string>To Year</string>
+          <string>Año hasta</string>
          </property>
         </widget>
        </item>
@@ -46,7 +46,7 @@
        <item row="0" column="6">
         <widget class="QLabel" name="labelToMonth">
          <property name="text">
-          <string>To Month</string>
+          <string>Mes hasta</string>
          </property>
         </widget>
        </item>
@@ -57,7 +57,7 @@
        <item row="1" column="0">
         <widget class="QLabel" name="labelProvince">
          <property name="text">
-          <string>Province</string>
+          <string>Provincia</string>
          </property>
         </widget>
        </item>
@@ -67,7 +67,7 @@
        <item row="1" column="4">
         <widget class="QLabel" name="labelExamCenter">
          <property name="text">
-          <string>Exam Center</string>
+          <string>Centro de examen</string>
          </property>
         </widget>
        </item>
@@ -78,7 +78,7 @@
        <item row="2" column="0">
         <widget class="QLabel" name="labelDrivingSchool">
          <property name="text">
-          <string>Driving School</string>
+          <string>Autoescuela</string>
          </property>
         </widget>
        </item>
@@ -88,7 +88,7 @@
        <item row="2" column="4">
         <widget class="QLabel" name="labelExamType">
          <property name="text">
-          <string>Exam Type</string>
+          <string>Tipo de examen</string>
          </property>
         </widget>
        </item>
@@ -99,7 +99,7 @@
        <item row="3" column="0">
         <widget class="QLabel" name="labelPermit">
          <property name="text">
-          <string>Permit</string>
+          <string>Permiso</string>
          </property>
         </widget>
        </item>
@@ -109,14 +109,14 @@
        <item row="3" column="4">
         <widget class="QPushButton" name="btnApplyFilters">
          <property name="text">
-          <string>Apply Filters</string>
+          <string>Aplicar filtros</string>
          </property>
         </widget>
        </item>
        <item row="3" column="5">
         <widget class="QPushButton" name="btnClearFilters">
          <property name="text">
-          <string>Clear Filters</string>
+          <string>Limpiar filtros</string>
          </property>
         </widget>
        </item>
@@ -129,9 +129,23 @@
     <item>
      <layout class="QHBoxLayout" name="actionsLayout">
       <item>
-       <widget class="QPushButton" name="btnPrintPdf">
+       <widget class="QPushButton" name="btnPrintTablePdf">
         <property name="text">
-         <string>Export PDF</string>
+         <string>Exportar tabla PDF</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnPrintChartPdf">
+        <property name="text">
+         <string>Exportar gráfico PDF</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnPrintBothPdf">
+        <property name="text">
+         <string>Exportar todo PDF</string>
         </property>
        </widget>
       </item>
@@ -148,10 +162,10 @@
      <height>26</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
-    </property>
+  <widget class="QMenu" name="menuFile">
+   <property name="title">
+    <string>Archivo</string>
+   </property>
     <addaction name="actionImportCsv"/>
     <addaction name="actionExit"/>
    </widget>
@@ -160,12 +174,12 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionImportCsv">
    <property name="text">
-    <string>Import CSV</string>
+    <string>Importar CSV</string>
    </property>
   </action>
   <action name="actionExit">
    <property name="text">
-    <string>Exit</string>
+    <string>Salir</string>
    </property>
   </action>
  </widget>
