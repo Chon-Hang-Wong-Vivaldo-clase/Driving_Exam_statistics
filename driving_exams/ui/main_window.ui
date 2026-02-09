@@ -174,7 +174,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionImportCsv">
    <property name="text">
-    <string>Importar CSV</string>
+    <string>Importar TXT</string>
    </property>
   </action>
   <action name="actionExit">
